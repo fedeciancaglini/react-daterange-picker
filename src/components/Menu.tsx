@@ -45,6 +45,7 @@ const styles = (theme: Theme) =>
 interface MenuProps extends WithStyles<typeof styles> {
 	dateRange: DateRange;
 	ranges: DefinedRange[];
+	mobile: boolean;
 	minDate: Date;
 	maxDate: Date;
 	firstMonth: Date;

@@ -36,6 +36,7 @@ const getValidatedMonths = (range: DateRange, minDate: Date, maxDate: Date) => {
 
 interface DateRangePickerProps {
 	open: boolean;
+	mobile: boolean;
 	initialDateRange?: DateRange;
 	definedRanges?: DefinedRange[];
 	minDate?: Date | string;
