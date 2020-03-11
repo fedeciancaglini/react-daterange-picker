@@ -48,6 +48,7 @@ const DateRangePickerImpl: React.FunctionComponent<DateRangePickerProps> = props
 
 	const {
 		open,
+		mobile,
 		onChange,
 		initialDateRange,
 		minDate,
@@ -159,6 +160,7 @@ const DateRangePickerImpl: React.FunctionComponent<DateRangePickerProps> = props
 			setDateRange={setDateRangeValidated}
 			helpers={helpers}
 			handlers={handlers}
+			mobile={mobile}
 		/>
 	) : null;
 };

@@ -18,8 +18,16 @@ import { MARKERS } from "..";
 
 const styles = (theme: Theme) =>
 	createStyles({
+		container: {
+			maxHeight: 600,
+			overflow: 'auto'
+		},
 		header: {
 			padding: "20px 70px"
+		},
+		headerMobile: {
+			padding: "20px 70px",
+			flexDirection: 'column'
 		},
 		headerItem: {
 			flex: 1,
@@ -28,6 +36,9 @@ const styles = (theme: Theme) =>
 		divider: {
 			borderLeft: `1px solid ${theme.palette.action.hover}`,
 			marginBottom: 20
+		},
+		calendar: {
+			flexDirection: 'column'
 		}
 	});
 
@@ -64,7 +75,8 @@ const Menu: React.FunctionComponent<MenuProps> = props => {
 		setSecondMonth,
 		setDateRange,
 		helpers,
-		handlers
+		handlers,
+		mobile
 	} = props;
 	const { startDate, endDate } = dateRange;
 	const canNavigateCloser = differenceInCalendarMonths(secondMonth, firstMonth) >= 2;
@@ -72,8 +84,8 @@ const Menu: React.FunctionComponent<MenuProps> = props => {
 	return (
 		<Paper elevation={5} square>
 			<Grid container direction="row" wrap="nowrap">
-				<Grid>
-					<Grid container className={classes.header} alignItems="center">
+				<Grid className={mobile ? classes.container : ''}>
+					<Grid container className={mobile ? classes.headerMobile : classes.header} alignItems="center">
 						<Grid item className={classes.headerItem}>
 							<Typography variant="subtitle1">
 								{startDate ? format(startDate, "MMMM DD, YYYY") : "Start Date"}
@@ -89,7 +101,7 @@ const Menu: React.FunctionComponent<MenuProps> = props => {
 						</Grid>
 					</Grid>
 					<Divider />
-					<Grid container direction="row" justify="center" wrap="nowrap">
+					<Grid container direction="row" className={mobile ? classes.calendar : ''} justify="center" wrap="nowrap">
 						<Month
 							{...commonProps}
 							value={firstMonth}
