@@ -1,14 +1,14 @@
 {
-	"name": "@matharumanpreet00/react-daterange-picker-mobile",
+	"name": "react-daterange-picker-responsive",
 	"version": "1.0.6",
-	"description": "A react date range picker using Material Design",
+	"description": "A responsive react date range picker using Material Design",
 	"author": {
-		"email": "matharumanpreet00@gmail.com",
-		"name": "Manpreet Singh Matharu"
+		"email": "federicociancaglini@sirius.com.ar",
+		"name": "Federico Ciancaglini"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/matharumanpreet00/react-daterange-picker"
+		"url": "https://github.com/fedeciancaglini/react-daterange-picker"
 	},
 	"main": "build/index.js",
 	"scripts": {
