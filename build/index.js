@@ -58,10 +58,22 @@ var DateRangePickerImpl = function (props) {
         if (date_fns_1.isBefore(date, secondMonth)) {
             setFirstMonth(date);
         }
+        else {
+            setFirstMonth(date);
+            var nextMonth = new Date(date.getTime());
+            nextMonth.setMonth(nextMonth.getMonth() + 1);
+            setSecondMonth(nextMonth);
+        }
     };
     var setSecondMonthValidated = function (date) {
         if (date_fns_1.isAfter(date, firstMonth)) {
             setSecondMonth(date);
+        }
+        else {
+            setFirstMonth(date);
+            var nextMonth = new Date(date.getTime());
+            nextMonth.setMonth(nextMonth.getMonth() + 1);
+            setSecondMonth(nextMonth);
         }
     };
     var setDateRangeValidated = function (range) {
@@ -91,11 +103,24 @@ var DateRangePickerImpl = function (props) {
             var firstNew = date_fns_1.addMonths(firstMonth, action);
             if (date_fns_1.isBefore(firstNew, secondMonth))
                 setFirstMonth(firstNew);
+            else {
+                setFirstMonth(firstNew);
+                var nextMonth = new Date(firstNew.getTime());
+                nextMonth.setMonth(nextMonth.getMonth() + 1);
+                setSecondMonth(nextMonth);
+            }
         }
         else {
             var secondNew = date_fns_1.addMonths(secondMonth, action);
-            if (date_fns_1.isBefore(firstMonth, secondNew))
+            if (date_fns_1.isBefore(firstMonth, secondNew)) {
                 setSecondMonth(secondNew);
+            }
+            else {
+                setFirstMonth(secondNew);
+                var nextMonth = new Date(secondNew.getTime());
+                nextMonth.setMonth(nextMonth.getMonth() + 1);
+                setSecondMonth(nextMonth);
+            }
         }
     };
     var onDayHover = function (date) {
