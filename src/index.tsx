@@ -79,12 +79,22 @@ const DateRangePickerImpl: React.FunctionComponent<DateRangePickerProps> = props
 	const setFirstMonthValidated = (date: Date) => {
 		if (isBefore(date, secondMonth)) {
 			setFirstMonth(date);
+		}else{
+			setFirstMonth(date);
+			const nextMonth = new Date(date.getTime());
+			nextMonth.setMonth(nextMonth.getMonth() + 1);
+			setSecondMonth(nextMonth);
 		}
 	};
 
 	const setSecondMonthValidated = (date: Date) => {
 		if (isAfter(date, firstMonth)) {
 			setSecondMonth(date);
+		}else{
+			setFirstMonth(date);
+			const nextMonth = new Date(date.getTime());
+			nextMonth.setMonth(nextMonth.getMonth() + 1);
+			setSecondMonth(nextMonth);
 		}
 	};
 
@@ -114,10 +124,24 @@ const DateRangePickerImpl: React.FunctionComponent<DateRangePickerProps> = props
 	const onMonthNavigate = (marker: Marker, action: NavigationAction) => {
 		if (marker == MARKERS.FIRST_MONTH) {
 			const firstNew = addMonths(firstMonth, action);
-			if (isBefore(firstNew, secondMonth)) setFirstMonth(firstNew);
+			if (isBefore(firstNew, secondMonth))
+				setFirstMonth(firstNew);
+			else{
+				setFirstMonth(firstNew);
+				const nextMonth = new Date(firstNew.getTime());
+				nextMonth.setMonth(nextMonth.getMonth() + 1);
+				setSecondMonth(nextMonth);
+			}
 		} else {
 			const secondNew = addMonths(secondMonth, action);
-			if (isBefore(firstMonth, secondNew)) setSecondMonth(secondNew);
+			if (isBefore(firstMonth, secondNew)){
+				setSecondMonth(secondNew);
+			}else{
+				setFirstMonth(secondNew);
+				const nextMonth = new Date(secondNew.getTime());
+				nextMonth.setMonth(nextMonth.getMonth() + 1);
+				setSecondMonth(nextMonth);
+			}
 		}
 	};
 
