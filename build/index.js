@@ -70,10 +70,10 @@ var DateRangePickerImpl = function (props) {
             setSecondMonth(date);
         }
         else {
-            setFirstMonth(date);
-            var nextMonth = new Date(date.getTime());
-            nextMonth.setMonth(nextMonth.getMonth() + 1);
-            setSecondMonth(nextMonth);
+            setSecondMonth(date);
+            var prevMonth = new Date(date.getTime());
+            prevMonth.setMonth(prevMonth.getMonth() - 1);
+            setFirstMonth(prevMonth);
         }
     };
     var setDateRangeValidated = function (range) {
@@ -116,10 +116,10 @@ var DateRangePickerImpl = function (props) {
                 setSecondMonth(secondNew);
             }
             else {
-                setFirstMonth(secondNew);
-                var nextMonth = new Date(secondNew.getTime());
-                nextMonth.setMonth(nextMonth.getMonth() + 1);
-                setSecondMonth(nextMonth);
+                setSecondMonth(secondNew);
+                var prevMonth = new Date(secondNew.getTime());
+                prevMonth.setMonth(prevMonth.getMonth() - 1);
+                setFirstMonth(prevMonth);
             }
         }
     };

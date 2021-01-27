@@ -91,10 +91,10 @@ const DateRangePickerImpl: React.FunctionComponent<DateRangePickerProps> = props
 		if (isAfter(date, firstMonth)) {
 			setSecondMonth(date);
 		}else{
-			setFirstMonth(date);
-			const nextMonth = new Date(date.getTime());
-			nextMonth.setMonth(nextMonth.getMonth() + 1);
-			setSecondMonth(nextMonth);
+			setSecondMonth(date);
+			const prevMonth = new Date(date.getTime());
+			prevMonth.setMonth(prevMonth.getMonth() - 1);
+			setFirstMonth(prevMonth);
 		}
 	};
 
@@ -137,10 +137,10 @@ const DateRangePickerImpl: React.FunctionComponent<DateRangePickerProps> = props
 			if (isBefore(firstMonth, secondNew)){
 				setSecondMonth(secondNew);
 			}else{
-				setFirstMonth(secondNew);
-				const nextMonth = new Date(secondNew.getTime());
-				nextMonth.setMonth(nextMonth.getMonth() + 1);
-				setSecondMonth(nextMonth);
+				setSecondMonth(secondNew);
+				const prevMonth = new Date(secondNew.getTime());
+				prevMonth.setMonth(prevMonth.getMonth() - 1);
+				setFirstMonth(prevMonth);
 			}
 		}
 	};
